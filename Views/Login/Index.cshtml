@@ -1,0 +1,65 @@
+@model LMSystem.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+        <div class="login-card p-4 p-sm-5">
+            <div class="text-center mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle mb-3" style="width: 64px; height: 64px; background: var(--accent-gradient) !important;">
+                    <i class="fa-solid fa-lock text-white fs-3"></i>
+                </div>
+                <h3 class="fw-bold text-white mb-1">Welcome Back</h3>
+                <p class="text-secondary mb-0">Sign in to LibraryManagement</p>
+            </div>
+
+            <form asp-action="Verify" method="post" asp-controller="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                @if (ViewBag.message != null)
+                {
+                    <div class="alert alert-danger border-0 bg-danger bg-opacity-25 text-white">
+                        <i class="fa-solid fa-circle-exclamation me-2"></i> @ViewBag.message
+                    </div>
+                }
+
+                <div class="mb-4">
+                    <label asp-for="username" class="form-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input asp-for="username" class="form-control border-start-0 ps-0" placeholder="Enter your username" />
+                    </div>
+                    <span asp-validation-for="username" class="text-danger small mt-1 d-block"></span>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label asp-for="password" class="form-label mb-0">Password</label>
+                        <a href="#" class="small text-decoration-none" style="color: var(--accent-primary);">Forgot password?</a>
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                            <i class="fa-solid fa-key"></i>
+                        </span>
+                        <input asp-for="password" type="password" class="form-control border-start-0 ps-0" placeholder="Enter your password" />
+                    </div>
+                    <span asp-validation-for="password" class="text-danger small mt-1 d-block"></span>
+                </div>
+                
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me" style="background-color: transparent; border-color: var(--border-color);">
+                    <label class="form-check-label text-secondary" for="remember-me">
+                        Remember me for 30 days
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm">
+                    Sign In <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

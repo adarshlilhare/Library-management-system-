@@ -1,0 +1,81 @@
+@model LMSystem.Models.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show border-0 bg-success bg-opacity-25 text-white" role="alert">
+        <i class="fa-solid fa-circle-check me-2"></i> @TempData["message"]
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Admin Dashboard</h2>
+        <p class="text-secondary mb-0">Overview of library metrics and activities.</p>
+    </div>
+    <div class="text-secondary">
+        <i class="fa-regular fa-calendar me-2"></i> @DateTime.Now.ToString("MMMM dd, yyyy")
+    </div>
+</div>
+
+<!-- Dashboard Stat Cards Grid -->
+<div class="row g-4 mb-5">
+    <!-- Total Students -->
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card stat-card bg-gradient-primary h-100 position-relative overflow-hidden">
+            <div class="card-body p-4">
+                <h6 class="text-uppercase fw-semibold opacity-75 mb-2 tracking-wide text-white">Total Students</h6>
+                <h2 class="display-5 fw-bold mb-0 text-white">@Model.TotalStudents</h2>
+                <i class="fa-solid fa-user-graduate stat-icon text-white"></i>
+            </div>
+            <div class="card-footer bg-white bg-opacity-10 border-0 py-2 d-flex justify-content-between align-items-center">
+                <a href="/Student/Index" class="text-white text-decoration-none small">View all students <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.75rem;"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Books -->
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card stat-card bg-gradient-success h-100 position-relative overflow-hidden">
+            <div class="card-body p-4">
+                <h6 class="text-uppercase fw-semibold opacity-75 mb-2 tracking-wide text-white">Total Books</h6>
+                <h2 class="display-5 fw-bold mb-0 text-white">@Model.TotalBooks</h2>
+                <i class="fa-solid fa-book stat-icon text-white"></i>
+            </div>
+            <div class="card-footer bg-white bg-opacity-10 border-0 py-2 d-flex justify-content-between align-items-center">
+                <a href="/Books/Index" class="text-white text-decoration-none small">View all books <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.75rem;"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Librarians -->
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card stat-card bg-gradient-info h-100 position-relative overflow-hidden">
+            <div class="card-body p-4">
+                <h6 class="text-uppercase fw-semibold opacity-75 mb-2 tracking-wide text-white">Total Librarians</h6>
+                <h2 class="display-5 fw-bold mb-0 text-white">@Model.TotalLibrarians</h2>
+                <i class="fa-solid fa-user-tie stat-icon text-white"></i>
+            </div>
+            <div class="card-footer bg-white bg-opacity-10 border-0 py-2 d-flex justify-content-between align-items-center">
+                <a href="/Librarian/Index" class="text-white text-decoration-none small">View all librarians <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.75rem;"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Borrowings -->
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card stat-card bg-gradient-warning h-100 position-relative overflow-hidden">
+            <div class="card-body p-4">
+                <h6 class="text-uppercase fw-semibold opacity-75 mb-2 tracking-wide text-white">Total Borrowings</h6>
+                <h2 class="display-5 fw-bold mb-0 text-white">@Model.TotalBorrowings</h2>
+                <i class="fa-solid fa-book-open-reader stat-icon text-white"></i>
+            </div>
+            <div class="card-footer bg-white bg-opacity-10 border-0 py-2 d-flex justify-content-between align-items-center">
+                <span class="text-white small opacity-75">Active loans</span>
+            </div>
+        </div>
+    </div>
+</div>

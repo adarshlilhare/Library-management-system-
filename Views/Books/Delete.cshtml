@@ -1,0 +1,51 @@
+@model LMSystem.Models.Book
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-circle me-3" style="width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0 text-danger">Delete Book</h2>
+                <p class="text-secondary mb-0">This action cannot be undone.</p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 border border-danger border-opacity-25">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-25 rounded-circle mb-3 text-danger" style="width: 80px; height: 80px;">
+                        <i class="fa-solid fa-triangle-exclamation fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-white mb-2">Are you absolutely sure?</h4>
+                    <p class="text-secondary mb-0">You are about to delete <strong>@Model.Title</strong>.</p>
+                </div>
+
+                <div class="bg-dark bg-opacity-50 p-4 rounded-3 mb-4 border border-color" style="border-color: var(--border-color);">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <span class="text-secondary small d-block">Author</span>
+                            <span class="fw-medium">@Model.Author</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-secondary small d-block">ISBN</span>
+                            <span class="fw-medium font-monospace">@Model.ISBN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form asp-action="Delete" method="post" class="d-flex gap-3">
+                    <input type="hidden" asp-for="BookId" />
+                    <button type="submit" class="btn btn-danger flex-grow-1 shadow-sm py-2 fw-semibold">
+                        <i class="fa-solid fa-trash me-2"></i> Yes, Delete It
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary py-2 px-4 fw-semibold">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+@model LMSystem.Models.Book
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-circle me-3" style="width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0">Book Details</h2>
+                <p class="text-secondary mb-0">View full information for this book.</p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="d-inline-flex align-items-center justify-content-center bg-info bg-opacity-25 rounded-circle mb-3 text-info" style="width: 80px; height: 80px;">
+                        <i class="fa-solid fa-book-open fs-1"></i>
+                    </div>
+                    <h3 class="fw-bold text-white mb-1">@Model.Title</h3>
+                    <p class="text-secondary mb-0">by @Model.Author</p>
+                </div>
+
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-3 border-color" style="border-color: var(--border-color);">
+                        <span class="text-secondary fw-semibold"><i class="fa-solid fa-barcode me-2"></i> ISBN</span>
+                        <span class="font-monospace">@Model.ISBN</span>
+                    </li>
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-3 border-color" style="border-color: var(--border-color);">
+                        <span class="text-secondary fw-semibold"><i class="fa-regular fa-calendar-days me-2"></i> Published</span>
+                        <span>@Model.PublishedDate.ToString("MMMM dd, yyyy")</span>
+                    </li>
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-3 border-color" style="border-color: var(--border-color);">
+                        <span class="text-secondary fw-semibold"><i class="fa-solid fa-circle-info me-2"></i> Status</span>
+                        <span>
+                            @if (Model.IsAvailable) {
+                                <span class="badge rounded-pill bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-3 py-2"><i class="fa-solid fa-circle-check me-1"></i> Available</span>
+                            } else {
+                                <span class="badge rounded-pill bg-warning bg-opacity-25 text-warning border border-warning border-opacity-25 px-3 py-2"><i class="fa-solid fa-clock me-1"></i> Borrowed</span>
+                            }
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="d-flex gap-3 mt-2">
+                    <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-primary flex-grow-1 shadow-sm py-2 fw-semibold">
+                        <i class="fa-solid fa-pen me-2"></i> Edit Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

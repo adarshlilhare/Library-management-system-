@@ -1,0 +1,63 @@
+@model LMSystem.Models.LibrarianModel
+@{
+    ViewData["Title"] = "Edit Librarian";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-circle me-3" style="width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0">Edit Librarian</h2>
+                <p class="text-secondary mb-0">Update staff information.</p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4 p-md-5">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="LibrarianId" />
+                    
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-semibold">Full Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </span>
+                            <input asp-for="Name" class="form-control border-start-0 ps-0" />
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-semibold">Age</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </span>
+                            <input asp-for="Age" type="number" class="form-control border-start-0 ps-0" />
+                        </div>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <label class="form-label text-secondary fw-semibold">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <input asp-for="Phone" class="form-control border-start-0 ps-0" />
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-primary flex-grow-1 shadow-sm py-2 fw-semibold">
+                            <i class="fa-solid fa-check me-2"></i> Update Librarian
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary py-2 px-4 fw-semibold">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

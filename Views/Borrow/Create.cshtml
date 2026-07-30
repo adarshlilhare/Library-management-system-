@@ -1,0 +1,70 @@
+@model LMSystem.ViewModels.BorrowViewModel
+@{
+    ViewData["Title"] = "Borrow Book";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-action="Index" asp-controller="Books" class="btn btn-outline-secondary rounded-circle me-3" style="width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div>
+                <h2 class="fw-bold mb-0 text-primary">Borrow Book</h2>
+                <p class="text-secondary mb-0">Fill out the form below to borrow <strong class="text-white">@Model.BookTitle</strong>.</p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 border border-primary border-opacity-25">
+            <div class="card-body p-4 p-md-5">
+                <form asp-action="Create" method="post">
+                    <input type="hidden" asp-for="BookId" />
+                    
+                    <div class="mb-4">
+                        <label asp-for="BorrowerName" class="form-label text-secondary fw-semibold">Borrower Full Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input asp-for="BorrowerName" class="form-control border-start-0 ps-0" placeholder="e.g. John Doe" />
+                        </div>
+                        <span asp-validation-for="BorrowerName" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="BorrowerEmail" class="form-label text-secondary fw-semibold">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input asp-for="BorrowerEmail" class="form-control border-start-0 ps-0" placeholder="e.g. john@example.com" />
+                        </div>
+                        <span asp-validation-for="BorrowerEmail" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="mb-5">
+                        <label asp-for="Phone" class="form-label text-secondary fw-semibold">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <input asp-for="Phone" class="form-control border-start-0 ps-0" placeholder="e.g. 555-0123" />
+                        </div>
+                        <span asp-validation-for="Phone" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-primary flex-grow-1 shadow-sm py-2 fw-semibold">
+                            <i class="fa-solid fa-hand-holding-hand me-2"></i> Confirm Borrow
+                        </button>
+                        <a asp-action="Index" asp-controller="Books" class="btn btn-outline-secondary py-2 px-4 fw-semibold">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
